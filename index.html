@@ -17,7 +17,27 @@ body{
   text-align:center;
   color:white;
 }
+.photos{
+  display:flex;
+  gap:25px;
+  justify-content:center;
+  align-items:center;
+  flex-wrap:wrap;
+  margin-bottom:30px;
+}
 
+.photos img{
+  width:260px;
+  height:320px;
+  object-fit:cover;
+  border-radius:25px;
+  box-shadow:0 15px 40px rgba(0,0,0,0.4);
+  transition:0.4s;
+}
+
+.photos img:hover{
+  transform:scale(1.08);
+}
 /* Main Container */
 .container{
   width:100%;
@@ -123,7 +143,11 @@ button{
 
 <div class="container">
 
-  <img src="saanvi.jpg">
+  <div class="photos">
+  <img src="photo1.jpeg">
+  <img src="photo2.jpeg">
+  <img src="photo3.jpeg">
+</div>
 
   <h1>🎂 HAPPY BIRTHDAY 🎂</h1>
   <h2>Saanvi Panta 💖</h2>
