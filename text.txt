@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Happy Birthday Saanvi 💖</title>
+
+<style>
+body{
+  margin:0;
+  height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  background:radial-gradient(circle at top,#ffafcc,#cdb4db,#bde0fe);
+  font-family:'Poppins', sans-serif;
+  overflow:hidden;
+  text-align:center;
+  color:white;
+}
+
+/* Main Container */
+.container{
+  width:100%;
+  height:100%;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  position:relative;
+  z-index:2;
+}
+
+img{
+  width:280px;
+  border-radius:25px;
+  box-shadow:0 10px 30px rgba(0,0,0,0.3);
+  margin-bottom:20px;
+}
+
+h1{
+  font-size:50px;
+  margin:10px 0;
+  text-shadow:0 0 20px #fff;
+}
+
+h2{
+  font-size:35px;
+  margin:10px 0;
+}
+
+p{
+  font-size:22px;
+  width:80%;
+  max-width:700px;
+  line-height:1.6;
+}
+
+button{
+  padding:15px 30px;
+  font-size:18px;
+  border:none;
+  border-radius:30px;
+  background:#ff4d8d;
+  color:white;
+  cursor:pointer;
+  margin-top:20px;
+}
+
+/* Floating Hearts */
+.heart{
+  position:fixed;
+  font-size:25px;
+  animation:floatUp linear infinite;
+}
+@keyframes floatUp{
+  from{transform:translateY(100vh);}
+  to{transform:translateY(-10vh);}
+}
+
+/* Stars */
+.star{
+  position:fixed;
+  font-size:18px;
+  animation:fallStar linear infinite;
+}
+@keyframes fallStar{
+  from{transform:translateY(-10vh);}
+  to{transform:translateY(100vh);}
+}
+
+/* Confetti */
+.confetti{
+  position:fixed;
+  width:8px;
+  height:8px;
+  top:-10px;
+  animation:fall linear infinite;
+}
+@keyframes fall{
+  to{transform:translateY(110vh) rotate(360deg);}
+}
+
+/* Firework */
+.firework{
+  position:fixed;
+  width:5px;
+  height:5px;
+  border-radius:50%;
+  animation:explode 1s ease-out forwards;
+}
+
+@keyframes explode{
+  0%{transform:scale(1);}
+  100%{transform:scale(20); opacity:0;}
+}
+
+</style>
+</head>
+
+<body>
+
+<audio id="music" src="birthday.mp3"></audio>
+
+<div class="container">
+
+  <img src="saanvi.jpg">
+
+  <h1>🎂 HAPPY BIRTHDAY 🎂</h1>
+  <h2>Saanvi Panta 💖</h2>
+
+  <p>
+    On your special day, I just want to say…<br><br>
+    You are one of the most beautiful souls I know ✨<br>
+    May your life be filled with love, happiness, success<br>
+    and endless magical moments 💕<br><br>
+    I’ll always support you no matter what 💗
+  </p>
+
+  <button onclick="startSurprise()">Tap For Magic ✨</button>
+
+</div>
+
+<script>
+
+function startSurprise(){
+  document.getElementById("music").play();
+  startHearts();
+  startStars();
+  startConfetti();
+  setInterval(createFirework,700);
+}
+
+/* Hearts */
+function startHearts(){
+  for(let i=0;i<25;i++){
+    let h=document.createElement("div");
+    h.className="heart";
+    h.innerHTML="💖";
+    h.style.left=Math.random()*100+"vw";
+    h.style.animationDuration=(Math.random()*5+4)+"s";
+    document.body.appendChild(h);
+  }
+}
+
+/* Stars */
+function startStars(){
+  for(let i=0;i<40;i++){
+    let s=document.createElement("div");
+    s.className="star";
+    s.innerHTML="✨";
+    s.style.left=Math.random()*100+"vw";
+    s.style.animationDuration=(Math.random()*4+3)+"s";
+    document.body.appendChild(s);
+  }
+}
+
+/* Confetti */
+function startConfetti(){
+  for(let i=0;i<100;i++){
+    let c=document.createElement("div");
+    c.className="confetti";
+    c.style.left=Math.random()*100+"vw";
+    c.style.backgroundColor=`hsl(${Math.random()*360},100%,70%)`;
+    c.style.animationDuration=(Math.random()*3+2)+"s";
+    document.body.appendChild(c);
+  }
+}
+
+/* Fireworks */
+function createFirework(){
+  let f=document.createElement("div");
+  f.className="firework";
+  f.style.left=Math.random()*100+"vw";
+  f.style.top=Math.random()*100+"vh";
+  f.style.backgroundColor=`hsl(${Math.random()*360},100%,60%)`;
+  document.body.appendChild(f);
+
+  setTimeout(()=>{f.remove();},1000);
+}
+
+</script>
+
+</body>
+</html>
