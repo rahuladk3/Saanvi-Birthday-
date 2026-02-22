@@ -21,7 +21,7 @@ body{
   text-align:center;
 }
 
-/* SECTION STYLE */
+/* SECTION */
 .section{
   position:absolute;
   width:100%;
@@ -33,14 +33,38 @@ body{
   transition:transform 0.8s ease;
 }
 
-/* Slide Animation */
 #page1{ transform:translateX(0); }
 #page2{ transform:translateX(100%); }
 
 .active-page2 #page1{ transform:translateX(-100%); }
 .active-page2 #page2{ transform:translateX(0); }
 
-/* First Page Photos */
+/* BIG PARAGRAPH */
+p{
+  font-size:1.6rem;
+  line-height:2;
+  max-width:850px;
+}
+
+/* GLOW TITLE */
+.glow-title{
+  font-size:3.5rem;
+  font-weight:800;
+  text-shadow:
+    0 0 10px #ff9ecf,
+    0 0 20px #ff6ec7,
+    0 0 30px #a0d8ff,
+    0 0 50px #74c0fc;
+  animation: glowPulse 3s infinite ease-in-out;
+}
+
+@keyframes glowPulse{
+  0%{ text-shadow:0 0 10px #ff9ecf,0 0 20px #ff6ec7; }
+  50%{ text-shadow:0 0 25px #a0d8ff,0 0 40px #74c0fc; }
+  100%{ text-shadow:0 0 10px #ff9ecf,0 0 20px #ff6ec7; }
+}
+
+/* PAGE1 PHOTOS */
 .photos{
   display:flex;
   gap:30px;
@@ -50,60 +74,72 @@ body{
 .photos img{
   width:250px;
   height:350px;
-  object-fit:contain; /* FULL IMAGE */
+  object-fit:contain;
   border-radius:20px;
-  background:radial-gradient(circle at top,#ffafcc,#cdb4db,#bde0fe);
   box-shadow:0 15px 35px rgba(0,0,0,0.4);
 }
 
-/* Second Page Positioned Photos */
-.photo{
-  position:absolute;
-  width:260px;
-  object-fit:contain;
-  border-radius:20px;
-  background:radial-gradient(circle at top,#ffafcc,#cdb4db,#bde0fe);
-  box-shadow:0 10px 30px rgba(0,0,0,0.4);
+/* PAGE2 GRID */
+.gallery{
+  display:grid;
+  grid-template-columns:repeat(3, 1fr);
+  grid-template-rows:repeat(2, auto);
+  gap:20px;
+  width:90%;
+  margin-bottom:30px;
 }
 
-.top-left{ top:60px; left:40px; }
-.middle-right{ top:35%; right:40px; }
-.bottom-left{ bottom:60px; left:60px; }
+.gallery img{
+  width:100%;
+  height:260px;
+  object-fit:cover;
+  border-radius:20px;
+  box-shadow:0 15px 30px rgba(0,0,0,0.4);
+  transition:0.4s ease;
+}
 
+.gallery img:hover{
+  transform:scale(1.08);
+  box-shadow:0 20px 40px rgba(0,0,0,0.6);
+}
+
+/* BUTTON */
 button{
   padding:14px 30px;
-  font-size:17px;
+  font-size:1.2rem;
   border:none;
   border-radius:30px;
   background:#ff4d8d;
   color:white;
   cursor:pointer;
   margin-top:20px;
+  transition:0.3s;
 }
 
-/* Hearts */
-.heart{
+button:hover{
+  transform:scale(1.05);
+}
+
+/* PAGE2 BLUE HEARTS */
+.blue-heart{
   position:fixed;
   font-size:22px;
-  animation:floatUp linear infinite;
-}
-@keyframes floatUp{
-  from{transform:translateY(100vh);}
-  to{transform:translateY(-10vh);}
+  animation:fall 6s linear infinite;
 }
 
-/* Stars */
-.star{
-  position:fixed;
-  font-size:18px;
-  animation:fall linear infinite;
-}
 @keyframes fall{
   from{transform:translateY(-10vh);}
   to{transform:translateY(110vh);}
 }
 
-/* Firework */
+/* STARS */
+.star{
+  position:fixed;
+  font-size:18px;
+  animation:fall 7s linear infinite;
+}
+
+/* FIREWORK */
 .firework{
   position:fixed;
   width:6px;
@@ -132,17 +168,17 @@ button{
     <img src="photo3.jpeg">
   </div>
 
-  <h1>🎂 Happy Birthday 🎂</h1>
-
-  <h2>Saanvi 💖</h2>
+  <h1 class="glow-title">🎂 Happy Birthday 🎂</h1>
+  <h2 style="font-size:2rem;">Saanvi 💖</h2>
 
   <p>
     On your special day, I just want to say…<br><br>
     You are one of the most beautiful souls I know ✨<br>
-    May your life be filled with love, happiness, success<br>
+    May your life be filled with love, happiness, success
     and endless magical moments 💕<br><br>
     I’ll always support you no matter what 💗
   </p>
+
   <button onclick="startMagic()">Tap For Magic ✨</button>
   <button onclick="nextPage()">Next 💌</button>
 
@@ -151,26 +187,25 @@ button{
 <!-- PAGE 2 -->
 <div class="section" id="page2">
 
-  <img src="photo4.jpeg" class="photo top-left">
-  <img src="photo5.jpeg" class="photo top-right">
-  <img src="photo6.jpeg" class="photo bottom-middle">
+  <div class="gallery">
+    <img src="photo4.jpeg">
+    <img src="photo5.jpeg">
+    <img src="photo6.jpeg">
+    <img src="photo7.jpeg">
+    <img src="photo8.jpeg">
+    <img src="photo9.jpeg">
+  </div>
 
-  <h1>Our Little World 💛</h1>
+  <h1 style="font-size:2.5rem;">Our Little World 💛</h1>
 
-  
-  <p style="max-width:800px; line-height:1.9;">
+  <p>
 Happy Birthday to you, our most special person 🎂💖<br><br>
-
-    We three talk every single evening, and whenever we get time, we talk again.  
-    Honestly, I can’t even sleep without talking to you both 😭💛<br><br>
-
-    We laugh together, we talk endlessly, sometimes we get annoyed…  
-    but at the end of the day, we still come back and talk again.<br><br>
-
-    I truly cannot stay without talking to you guys.  
-    You are my comfort, my daily happiness, my safe place 🌸✨<br><br>
-
-    Our friendship means more than words can explain 💖
+We three talk every single evening, and whenever we get time, we talk again.  
+Honestly, I can’t even sleep without talking to you both 💙<br><br>
+We laugh together, talk endlessly, get annoyed sometimes…  
+but still come back to each other again and again.<br><br>
+You are my comfort, my daily happiness, my safe place ✨  
+Our friendship means more than words can explain 💖
   </p>
 
   <button onclick="prevPage()">Previous ⬅</button>
@@ -181,29 +216,29 @@ Happy Birthday to you, our most special person 🎂💖<br><br>
 
 function startMagic(){
   document.getElementById("music").play();
-  startHearts();
-  startStars();
 }
 
 function nextPage(){
   document.body.classList.add("active-page2");
   explodeFireworks();
+  startBlueHearts();
+  startStars();
 }
 
 function prevPage(){
   document.body.classList.remove("active-page2");
 }
 
-/* Hearts */
-function startHearts(){
+/* Blue Hearts */
+function startBlueHearts(){
   setInterval(function(){
     let h=document.createElement("div");
-    h.className="heart";
-    h.innerHTML="💖";
+    h.className="blue-heart";
+    h.innerHTML="💙";
     h.style.left=Math.random()*100+"vw";
-    h.style.animationDuration=(Math.random()*5+4)+"s";
     document.body.appendChild(h);
-  },800);
+    setTimeout(()=>{h.remove();},6000);
+  },600);
 }
 
 /* Stars */
@@ -213,12 +248,12 @@ function startStars(){
     s.className="star";
     s.innerHTML="✨";
     s.style.left=Math.random()*100+"vw";
-    s.style.animationDuration=(Math.random()*4+3)+"s";
     document.body.appendChild(s);
-  },600);
+    setTimeout(()=>{s.remove();},7000);
+  },800);
 }
 
-/* Fireworks Explosion */
+/* Fireworks */
 function explodeFireworks(){
   for(let i=0;i<30;i++){
     let f=document.createElement("div");
