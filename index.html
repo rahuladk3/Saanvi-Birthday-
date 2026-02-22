@@ -37,11 +37,32 @@ body{
 /* Glow Title */
 .glow{
   font-size:60px;
+  background: linear-gradient(90deg,#ff4da6,#ff99cc,#66ccff,#3399ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
   text-shadow:
-    0 0 10px #fff,
-    0 0 20px #ff4da6,
+    0 0 10px #ff4da6,
+    0 0 20px #66ccff,
     0 0 30px #ff99cc,
-    0 0 40px #ff66b2;
+    0 0 40px #3399ff;
+  animation: glowPulse 2s infinite alternate;
+}
+
+@keyframes glowPulse{
+  from{
+    text-shadow:
+      0 0 10px #ff4da6,
+      0 0 20px #66ccff,
+      0 0 30px #ff99cc,
+      0 0 40px #3399ff;
+  }
+  to{
+    text-shadow:
+      0 0 20px #ff66cc,
+      0 0 30px #3399ff,
+      0 0 40px #ff99cc,
+      0 0 60px #66ccff;
+  }
 }
 
 /* Paragraph Big */
