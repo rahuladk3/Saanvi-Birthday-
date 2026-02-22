@@ -1,83 +1,71 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
 <meta charset="UTF-8">
-<title>Happy Birthday Saanvi 💖</title>
+<title>Happy Birthday 💖</title>
 
 <style>
 body{
   margin:0;
-  height:100vh;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  background:radial-gradient(circle at top,#ffafcc,#cdb4db,#bde0fe);
   font-family:'Poppins', sans-serif;
+  background:radial-gradient(circle at top,#ffafcc,#cdb4db,#bde0fe);
   overflow:hidden;
-  text-align:center;
   color:white;
-}
-.photos{
-  display:flex;
-  gap:25px;
-  justify-content:center;
-  align-items:center;
-  flex-wrap:wrap;
-  margin-bottom:30px;
+  text-align:center;
 }
 
-.photos img{
-  width:260px;
-  height:320px;
-  object-fit:cover;
-  border-radius:25px;
-  box-shadow:0 15px 40px rgba(0,0,0,0.4);
-  transition:0.4s;
-}
-
-.photos img:hover{
-  transform:scale(1.08);
-}
-/* Main Container */
-.container{
+/* SECTION STYLE */
+.section{
+  position:absolute;
   width:100%;
-  height:100%;
+  height:100vh;
   display:flex;
   flex-direction:column;
   justify-content:center;
   align-items:center;
-  position:relative;
-  z-index:2;
+  transition:transform 0.8s ease;
 }
 
-img{
-  width:280px;
-  border-radius:25px;
-  box-shadow:0 10px 30px rgba(0,0,0,0.3);
+/* Slide Animation */
+#page1{ transform:translateX(0); }
+#page2{ transform:translateX(100%); }
+
+.active-page2 #page1{ transform:translateX(-100%); }
+.active-page2 #page2{ transform:translateX(0); }
+
+/* First Page Photos */
+.photos{
+  display:flex;
+  gap:30px;
   margin-bottom:20px;
 }
 
-h1{
-  font-size:50px;
-  margin:10px 0;
-  text-shadow:0 0 20px #fff;
+.photos img{
+  width:300px;
+  height:350px;
+  object-fit:contain; /* FULL IMAGE */
+  border-radius:20px;
+  background:white;
+  box-shadow:0 15px 35px rgba(0,0,0,0.4);
 }
 
-h2{
-  font-size:35px;
-  margin:10px 0;
+/* Second Page Positioned Photos */
+.photo{
+  position:absolute;
+  width:260px;
+  object-fit:contain;
+  border-radius:20px;
+  background:white;
+  box-shadow:0 10px 30px rgba(0,0,0,0.4);
 }
 
-p{
-  font-size:22px;
-  width:80%;
-  max-width:700px;
-  line-height:1.6;
-}
+.top-left{ top:60px; left:40px; }
+.middle-right{ top:35%; right:40px; }
+.bottom-left{ bottom:60px; left:60px; }
 
 button{
-  padding:15px 30px;
-  font-size:18px;
+  padding:14px 30px;
+  font-size:17px;
   border:none;
   border-radius:30px;
   background:#ff4d8d;
@@ -86,10 +74,10 @@ button{
   margin-top:20px;
 }
 
-/* Floating Hearts */
+/* Hearts */
 .heart{
   position:fixed;
-  font-size:25px;
+  font-size:22px;
   animation:floatUp linear infinite;
 }
 @keyframes floatUp{
@@ -101,125 +89,135 @@ button{
 .star{
   position:fixed;
   font-size:18px;
-  animation:fallStar linear infinite;
-}
-@keyframes fallStar{
-  from{transform:translateY(-10vh);}
-  to{transform:translateY(100vh);}
-}
-
-/* Confetti */
-.confetti{
-  position:fixed;
-  width:8px;
-  height:8px;
-  top:-10px;
   animation:fall linear infinite;
 }
 @keyframes fall{
-  to{transform:translateY(110vh) rotate(360deg);}
+  from{transform:translateY(-10vh);}
+  to{transform:translateY(110vh);}
 }
 
 /* Firework */
 .firework{
   position:fixed;
-  width:5px;
-  height:5px;
+  width:6px;
+  height:6px;
   border-radius:50%;
   animation:explode 1s ease-out forwards;
 }
 
 @keyframes explode{
   0%{transform:scale(1);}
-  100%{transform:scale(20); opacity:0;}
+  100%{transform:scale(25); opacity:0;}
 }
-
 </style>
 </head>
 
 <body>
 
-<audio id="music" src="birthday.mp3"></audio>
+<audio id="music" src="birthday.mp3" loop></audio>
 
-<div class="container">
+<!-- PAGE 1 -->
+<div class="section" id="page1">
 
   <div class="photos">
-  <img src="photo1.jpeg">
-  <img src="photo2.jpeg">
-  <img src="photo3.jpeg">
-</div>
+    <img src="photo1.jpeg">
+    <img src="photo2.jpeg">
+    <img src="photo3.jpeg">
+  </div>
 
-  <h1>🎂 HAPPY BIRTHDAY 🎂</h1>
-  <h2>Saanvi Panta 💖</h2>
+  <h1>🎂 Happy Birthday 🎂</h1>
+  <h2>Saanvi 💖</h2>
 
-  <p>
-    On your special day, I just want to say…<br><br>
-    You are one of the most beautiful souls I know ✨<br>
-    May your life be filled with love, happiness, success<br>
-    and endless magical moments 💕<br><br>
-    I’ll always support you no matter what 💗
+  <p style="max-width:700px;">
+    You are one of the most beautiful souls I know ✨  
+    May your life be filled with happiness and magic 💕
   </p>
 
-  <button onclick="startSurprise()">Tap For Magic ✨</button>
+  <button onclick="startMagic()">Tap For Magic ✨</button>
+  <button onclick="nextPage()">Next 💌</button>
+
+</div>
+
+<!-- PAGE 2 -->
+<div class="section" id="page2">
+
+  <img src="photo4.jpeg" class="photo top-left">
+  <img src="photo5.jpeg" class="photo middle-right">
+  <img src="photo6.jpeg" class="photo bottom-left">
+
+  <h1>Our Little World 💛</h1>
+
+  <p style="max-width:750px; line-height:1.8;">
+    Happy Birthday to you, our most special person 🎂💖<br><br>
+
+    We three talk every single evening, and whenever we get time, we talk again.  
+    Honestly, I can’t even sleep without talking to you both 😭💛<br><br>
+
+    We laugh together, we talk endlessly, sometimes we get annoyed…  
+    but at the end of the day, we still come back and talk again.<br><br>
+
+    I truly cannot stay without talking to you guys.  
+    You are my comfort, my daily happiness, my safe place 🌸✨<br><br>
+
+    Our friendship means more than words can explain 💖
+  </p>
+
+  <button onclick="prevPage()">Previous ⬅</button>
 
 </div>
 
 <script>
 
-function startSurprise(){
+function startMagic(){
   document.getElementById("music").play();
   startHearts();
   startStars();
-  startConfetti();
-  setInterval(createFirework,700);
+}
+
+function nextPage(){
+  document.body.classList.add("active-page2");
+  explodeFireworks();
+}
+
+function prevPage(){
+  document.body.classList.remove("active-page2");
 }
 
 /* Hearts */
 function startHearts(){
-  for(let i=0;i<25;i++){
+  setInterval(function(){
     let h=document.createElement("div");
     h.className="heart";
     h.innerHTML="💖";
     h.style.left=Math.random()*100+"vw";
     h.style.animationDuration=(Math.random()*5+4)+"s";
     document.body.appendChild(h);
-  }
+  },800);
 }
 
 /* Stars */
 function startStars(){
-  for(let i=0;i<40;i++){
+  setInterval(function(){
     let s=document.createElement("div");
     s.className="star";
     s.innerHTML="✨";
     s.style.left=Math.random()*100+"vw";
     s.style.animationDuration=(Math.random()*4+3)+"s";
     document.body.appendChild(s);
-  }
+  },600);
 }
 
-/* Confetti */
-function startConfetti(){
-  for(let i=0;i<100;i++){
-    let c=document.createElement("div");
-    c.className="confetti";
-    c.style.left=Math.random()*100+"vw";
-    c.style.backgroundColor=`hsl(${Math.random()*360},100%,70%)`;
-    c.style.animationDuration=(Math.random()*3+2)+"s";
-    document.body.appendChild(c);
+/* Fireworks Explosion */
+function explodeFireworks(){
+  for(let i=0;i<30;i++){
+    let f=document.createElement("div");
+    f.className="firework";
+    f.style.left=Math.random()*100+"vw";
+    f.style.top=Math.random()*100+"vh";
+    f.style.backgroundColor=`hsl(${Math.random()*360},100%,60%)`;
+    document.body.appendChild(f);
+    setTimeout(()=>{f.remove();},1000);
   }
-}
-
-/* Fireworks */
-function createFirework(){
-  let f=document.createElement("div");
-  f.className="firework";
-  f.style.left=Math.random()*100+"vw";
-  f.style.top=Math.random()*100+"vh";
-  f.style.backgroundColor=`hsl(${Math.random()*360},100%,60%)`;
-  document.body.appendChild(f);
-
-  setTimeout(()=>{f.remove();},1000);
 }
 
 </script>
