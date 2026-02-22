@@ -3,7 +3,19 @@
 <head>
 <meta charset="UTF-8">
 <title>Happy Birthday 💖</title>
+@keyframes glowPulse {
+  0% { text-shadow: 0 0 10px #ff9ecf, 0 0 20px #ff6ec7; }
+  50% { text-shadow: 0 0 20px #a0d8ff, 0 0 40px #74c0fc; }
+  100% { text-shadow: 0 0 10px #ff9ecf, 0 0 20px #ff6ec7; }
+}
 
+.birthday-text{
+  font-size: 3.8rem;
+  font-weight: 800;
+  letter-spacing: 3px;
+  color: white;
+  animation: glowPulse 3s infinite ease-in-out;
+}
 <style>
 body{
   margin:0;
