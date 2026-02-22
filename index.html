@@ -44,14 +44,14 @@ body{
     0 0 40px #ff66b2;
 }
 
-/* Big Paragraph */
+/* Paragraph Big */
 p{
   font-size:22px;
   max-width:850px;
   line-height:1.9;
 }
 
-/* Page1 Photos */
+/* Photos Page1 */
 .photos{
   display:flex;
   gap:30px;
@@ -69,14 +69,13 @@ p{
   transform:scale(1.08);
 }
 
-/* PAGE 2 GRID */
+/* Page2 Grid */
 .photo-grid{
   display:grid;
   grid-template-columns: repeat(3, 1fr);
   gap:30px;
   margin-bottom:30px;
 }
-
 .photo-grid img{
   width:250px;
   height:330px;
@@ -98,7 +97,7 @@ button{
   background:#ff4d8d;
   color:white;
   cursor:pointer;
-  margin-top:20px;
+  margin-top:15px;
 }
 
 /* Hearts & Stars */
@@ -116,22 +115,24 @@ button{
   to{transform:translateY(110vh);}
 }
 
-/* Firework */
+/* Fireworks */
 .firework{
   position:fixed;
-  width:6px;
-  height:6px;
+  width:8px;
+  height:8px;
   border-radius:50%;
   animation:explode 1s ease-out forwards;
 }
 @keyframes explode{
   0%{transform:scale(1);}
-  100%{transform:scale(25); opacity:0;}
+  100%{transform:scale(30); opacity:0;}
 }
 </style>
 </head>
 
 <body>
+
+<audio id="music" src="birthday.mp3" loop></audio>
 
 <!-- PAGE 1 -->
 <div class="section" id="page1">
@@ -148,11 +149,14 @@ button{
   <p>
     On your special day, I just want to say…<br><br>
     You are one of the most beautiful souls I know ✨<br>
-    May your life be filled with love, happiness, success
-    and endless magical moments 💕<br><br>
-    I’ll always support you no matter what 💗
+    May your life be filled with love and happiness 💕<br><br>
+    I’ll always support you 💗
   </p>
 
+  <!-- MUSIC BUTTON -->
+  <button onclick="playMusic()">Tap For Magic ✨</button>
+
+  <!-- NEXT BUTTON -->
   <button onclick="nextPage()">Next 💌</button>
 </div>
 
@@ -181,17 +185,21 @@ Our friendship means more than words can explain 💖
   </p>
 
   <button onclick="prevPage()">Previous ⬅</button>
-
 </div>
 
 <script>
 
-/* Auto hearts & stars page1 */
+/* Auto Pink Hearts Page1 */
 window.onload = function(){
   setInterval(createPinkHeart,800);
   setInterval(createStar,700);
 };
 
+function playMusic(){
+  document.getElementById("music").play();
+}
+
+/* Hearts */
 function createPinkHeart(){
   let h=document.createElement("div");
   h.className="heart";
@@ -222,8 +230,23 @@ function createStar(){
   setTimeout(()=>{s.remove();},5000);
 }
 
+/* Fireworks */
+function explodeFireworks(){
+  for(let i=0;i<40;i++){
+    let f=document.createElement("div");
+    f.className="firework";
+    f.style.left=Math.random()*100+"vw";
+    f.style.top=Math.random()*100+"vh";
+    f.style.backgroundColor=`hsl(${Math.random()*360},100%,60%)`;
+    document.body.appendChild(f);
+    setTimeout(()=>{f.remove();},1000);
+  }
+}
+
+/* Navigation */
 function nextPage(){
   document.body.classList.add("active-page2");
+  explodeFireworks();
   setInterval(createBlueHeart,700);
 }
 
