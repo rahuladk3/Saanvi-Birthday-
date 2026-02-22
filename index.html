@@ -3,19 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Happy Birthday 💖</title>
-@keyframes glowPulse {
-  0% { text-shadow: 0 0 10px #ff9ecf, 0 0 20px #ff6ec7; }
-  50% { text-shadow: 0 0 20px #a0d8ff, 0 0 40px #74c0fc; }
-  100% { text-shadow: 0 0 10px #ff9ecf, 0 0 20px #ff6ec7; }
-}
 
-.birthday-text{
-  font-size: 3.8rem;
-  font-weight: 800;
-  letter-spacing: 3px;
-  color: white;
-  animation: glowPulse 3s infinite ease-in-out;
-}
 <style>
 body{
   margin:0;
@@ -60,11 +48,11 @@ body{
 }
 
 .photos img{
-  width:300px;
-  height:350px;
+  width:828px;
+  height:1484px;
   object-fit:contain; /* FULL IMAGE */
   border-radius:20px;
-  background:white;
+  background:radial-gradient(circle at top,#ffafcc,#cdb4db,#bde0fe);
   box-shadow:0 15px 35px rgba(0,0,0,0.4);
 }
 
@@ -145,12 +133,28 @@ button{
   </div>
 
   <h1>🎂 Happy Birthday 🎂</h1>
+  @keyframes glowPulse {
+  0% { text-shadow: 0 0 10px #ff9ecf, 0 0 20px #ff6ec7; }
+  50% { text-shadow: 0 0 20px #a0d8ff, 0 0 40px #74c0fc; }
+  100% { text-shadow: 0 0 10px #ff9ecf, 0 0 20px #ff6ec7; }
+}
+
+.birthday-text{
+  font-size: 3.8rem;
+  font-weight: 800;
+  letter-spacing: 3px;
+  color: white;
+  animation: glowPulse 3s infinite ease-in-out;
+}
   <h2>Saanvi 💖</h2>
 
-  <p style="max-width:700px;">
+  p{
+  font-size: 1.3rem;   /* bigger than normal */
+  line-height: 1.8;
     You are one of the most beautiful souls I know ✨  
     May your life be filled with happiness and magic 💕
-  </p>
+  }
+
 
   <button onclick="startMagic()">Tap For Magic ✨</button>
   <button onclick="nextPage()">Next 💌</button>
@@ -161,13 +165,15 @@ button{
 <div class="section" id="page2">
 
   <img src="photo4.jpeg" class="photo top-left">
-  <img src="photo5.jpeg" class="photo middle-right">
-  <img src="photo6.jpeg" class="photo bottom-left">
+  <img src="photo5.jpeg" class="photo top-right">
+  <img src="photo6.jpeg" class="photo bottom-middle">
 
   <h1>Our Little World 💛</h1>
 
-  <p style="max-width:750px; line-height:1.8;">
-    Happy Birthday to you, our most special person 🎂💖<br><br>
+  p{
+  font-size: 1.3rem;   /* bigger than normal */
+  line-height: 1.8;
+Happy Birthday to you, our most special person 🎂💖<br><br>
 
     We three talk every single evening, and whenever we get time, we talk again.  
     Honestly, I can’t even sleep without talking to you both 😭💛<br><br>
@@ -179,7 +185,7 @@ button{
     You are my comfort, my daily happiness, my safe place 🌸✨<br><br>
 
     Our friendship means more than words can explain 💖
-  </p>
+  }
 
   <button onclick="prevPage()">Previous ⬅</button>
 
