@@ -35,14 +35,23 @@ body{
 .active-page2 #page2{ transform:translateX(0); }
 
 /* Glow Title */
-.glow{
-  font-size:60px;
+.glow-title{
+  font-size:3.5rem;
+  font-weight:800;
   text-shadow:
-    0 0 10px #fff,
-    0 0 20px #ff4da6,
-    0 0 30px #ff99cc,
-    0 0 40px #ff66b2;
+    0 0 10px #ff9ecf,
+    0 0 20px #ff6ec7,
+    0 0 30px #a0d8ff,
+    0 0 50px #74c0fc;
+  animation: glowPulse 3s infinite ease-in-out;
 }
+
+@keyframes glowPulse{
+  0%{ text-shadow:0 0 10px #ff9ecf,0 0 20px #ff6ec7; }
+  50%{ text-shadow:0 0 25px #a0d8ff,0 0 40px #74c0fc; }
+  100%{ text-shadow:0 0 10px #ff9ecf,0 0 20px #ff6ec7; }
+}
+  
 /* Paragraph Big */
 p{
   font-size:25px;
