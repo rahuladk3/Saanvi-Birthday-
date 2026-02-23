@@ -9,19 +9,14 @@ body{
   margin:0;
   font-family:'Poppins', sans-serif;
   min-height:100vh;
-  background: linear-gradient(to bottom,
-      #ffb3d9,
-      #ffc8dd,
-      #bde0fe,
-      #a2d2ff);
+  background: linear-gradient(to bottom,#ffb3d9,#ffc8dd,#bde0fe,#a2d2ff);
   background-attachment: fixed;
-  background-size: cover;
   overflow:hidden;
   color:white;
   text-align:center;
 }
 
-  /* RGB TOP TEXT */
+/* MARQUEE */
 .marquee{
   position:fixed;
   top:15px;
@@ -59,73 +54,66 @@ body{
 
 #page1{ transform:translateX(0); }
 #page2{ transform:translateX(100%); }
+#page3{ transform:translateX(200%); }
 
 .active-page2 #page1{ transform:translateX(-100%); }
 .active-page2 #page2{ transform:translateX(0); }
 
+.active-page3 #page2{ transform:translateX(-100%); }
+.active-page3 #page3{ transform:translateX(0); }
+
 /* BIG PARAGRAPH */
 p{
-  font-size:1.6rem;
-  line-height:2;
-  max-width:850px;
+  font-size:1.9rem;
+  line-height:2.2;
+  max-width:900px;
 }
 
-/* GLOW TITLE */
+/* TITLES */
 .glow-title{
   font-size:3.5rem;
   font-weight:800;
-  text-shadow:
-    0 0 10px #ff9ecf,
-    0 0 20px #ff6ec7,
-    0 0 30px #a0d8ff,
-    0 0 50px #74c0fc;
-  animation: glowPulse 3s infinite ease-in-out;
+  text-shadow:0 0 10px #ff9ecf,0 0 20px #ff6ec7,0 0 30px #a0d8ff;
+  animation: glowPulse 3s infinite alternate;
+}
+@keyframes glowPulse{
+  from{ text-shadow:0 0 10px #ff9ecf; }
+  to{ text-shadow:0 0 40px #a0d8ff; }
 }
 
-@keyframes glowPulse{
-  0%{ text-shadow:0 0 10px #ff9ecf,0 0 20px #ff6ec7; }
-  50%{ text-shadow:0 0 25px #a0d8ff,0 0 40px #74c0fc; }
-  100%{ text-shadow:0 0 10px #ff9ecf,0 0 20px #ff6ec7; }
+.page3-title{
+  font-size:50px;
+  font-weight:800;
+  text-shadow:0 0 15px #74c0fc,0 0 30px #4dabf7;
+  animation: blueGlow 3s infinite alternate;
 }
-  
-/* Photos Page1 */
-.photos{
+@keyframes blueGlow{
+  from{ text-shadow:0 0 10px #74c0fc; }
+  to{ text-shadow:0 0 50px #a5d8ff; }
+}
+
+/* PHOTOS */
+.photos,.photo-grid{
   display:flex;
   gap:30px;
+  flex-wrap:wrap;
+  justify-content:center;
   margin-bottom:20px;
 }
-.photos img{
+.photos img,.photo-grid img{
   width:240px;
-  height:340px;
+  height:330px;
   object-fit:cover;
   border-radius:20px;
   box-shadow:0 15px 35px rgba(0,0,0,0.4);
-  transition:0.4s;
+  animation:autoZoom 6s infinite alternate;
 }
-.photos img:hover{
-  transform:scale(1.08);
-}
-
-/* Page2 Grid */
-.photo-grid{
-  display:grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap:30px;
-  margin-bottom:30px;
-}
-.photo-grid img{
-  width:250px;
-  height:330px;
-  object-fit:cover;
-  border-radius:25px;
-  box-shadow:0 15px 35px rgba(0,0,0,0.4);
-  transition:0.4s;
-}
-.photo-grid img:hover{
-  transform:scale(1.1);
+@keyframes autoZoom{
+  from{transform:scale(1);}
+  to{transform:scale(1.08);}
 }
 
-/* Buttons */
+/* BUTTON */
 button{
   padding:14px 30px;
   font-size:18px;
@@ -137,7 +125,7 @@ button{
   margin-top:15px;
 }
 
-/* Hearts & Stars */
+/* HEARTS & STARS */
 .heart,.star{
   position:fixed;
   font-size:22px;
@@ -152,17 +140,30 @@ button{
   to{transform:translateY(110vh);}
 }
 
-/* Fireworks */
-.firework{
-  position:fixed;
-  width:8px;
-  height:8px;
-  border-radius:50%;
-  animation:explode 1s ease-out forwards;
+/* CLOUDS */
+.cloud{
+  position:absolute;
+  width:200px;
+  opacity:0.6;
+  animation:cloudMove 50s linear infinite;
 }
-@keyframes explode{
-  0%{transform:scale(1);}
-  100%{transform:scale(30); opacity:0;}
+@keyframes cloudMove{
+  from{transform:translateX(-300px);}
+  to{transform:translateX(120vw);}
+}
+
+/* POPUP */
+.popup{
+  position:fixed;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  background:white;
+  color:#333;
+  padding:30px;
+  border-radius:20px;
+  display:none;
+  z-index:1000;
 }
 </style>
 </head>
@@ -170,155 +171,140 @@ button{
 <body>
 
 <audio id="music" src="birthday.mp3" loop></audio>
-  
-  <div class="marquee">
+
+<div class="marquee">
 <span>🎉 HAPPY BIRTHDAY TO YOU SANJAM PANTA 💖🥳 🎉</span>
 </div>
 
 <!-- PAGE 1 -->
 <div class="section" id="page1">
+<div class="photos">
+<img src="photo1.jpeg">
+<img src="photo2.jpeg">
+<img src="photo3.jpeg">
+</div>
 
-  <div class="photos">
-    <img src="photo1.jpeg">
-    <img src="photo2.jpeg">
-    <img src="photo3.jpeg">
-  </div>
+<h1 class="glow-title">🎂 Happy Birthday 🎂</h1>
+<h2>Saanvi 💖</h2>
 
-  <h1 class="glow-title">🎂 Happy Birthday 🎂</h1>
-  <h2 style="font-size:2rem;">Saanvi 💖</h2>
+<p>May your life always shine with happiness and love. ✨</p>
 
-  <p>
-Happy Birthday, Saanvi! 🎉✨<br><br>
-
-On this beautiful day, I just want to remind you how special you truly are. 
-May your life always be filled with calmness, happiness, and the kind of peace that makes your heart feel light. 
-I hope every dream you quietly carry inside you slowly turns into reality, one by one.<br><br>
-
-May success follow your efforts, love surround your heart, 
-and may you always find yourself growing into someone you are proud of becoming.<br><br>
-
-Please never let sadness stay with you for too long — 
-because your smile has the power to brighten even the darkest moments. 
-No matter what challenges come your way, 
-I pray you always find strength, courage, and positivity within yourself.<br><br>
-
-You deserve nothing less than the most beautiful things life can offer. 
-Stay the same pure, kind, and wonderful soul you are. 🌷✨
-</p>
-
-  <!-- MUSIC BUTTON -->
-  <button onclick="playMusic()">Tap For Magic ✨</button>
-
-  <!-- NEXT BUTTON -->
-  <button onclick="nextPage()">Next 💌</button>
+<button onclick="playMusic()">Tap For Magic ✨</button>
+<button onclick="nextPage()">Next 💌</button>
 </div>
 
 <!-- PAGE 2 -->
 <div class="section" id="page2">
+<div class="photo-grid">
+<img src="photo4.jpeg">
+<img src="photo5.jpeg">
+<img src="photo6.jpeg">
+<img src="photo7.jpeg">
+<img src="photo8.jpeg">
+<img src="photo9.jpeg">
+</div>
 
-  <div class="photo-grid">
-    <img src="photo4.jpeg">
-    <img src="photo5.jpeg">
-    <img src="photo6.jpeg">
-    <img src="photo7.jpeg">
-    <img src="photo8.jpeg">
-    <img src="photo9.jpeg">
-  </div>
+<h1>Our Little World 💙</h1>
 
-  <h1 style="font-size:45px;">Our Little World 💙</h1>
+<button onclick="nextPage2()">Next 💙</button>
+<button onclick="prevPage()">Previous ⬅</button>
+</div>
 
-  <p>
-🤍 About Us – Saanvi, Ishan & Me<br><br>
+<!-- PAGE 3 -->
+<div class="section" id="page3">
+<img src="https://i.ibb.co/2k0Y8FZ/cloud.png" class="cloud" style="top:15%;">
+<img src="https://i.ibb.co/2k0Y8FZ/cloud.png" class="cloud" style="top:45%;animation-duration:70s;">
 
-Having Saanvi and Ishan in my life feels like a blessing I never expected but always needed. 
-What we share is not just friendship — it’s comfort, understanding, and a connection that feels natural and effortless.<br><br>
+<h1 class="page3-title">Forever Us 💙</h1>
 
-We talk almost every day — mostly on calls — laughing over random things, teasing each other endlessly, 
-sometimes getting annoyed, but never staying distant for long. 
-No matter how small the disagreement is, we always choose to come back and fix it.<br><br>
+<p>This friendship is rare, beautiful, and forever special. 💙✨</p>
 
-Some days feel incomplete without hearing their voices. 
-Sometimes I even struggle to sleep if we haven’t talked. 
-Whenever I get a little free time, they are the first people I think of — 
-because they are not just friends anymore, they feel like home.<br><br>
+<button onclick="prevPage3()">Previous ⬅</button>
+</div>
 
-We’ve created so many simple yet unforgettable memories — 
-late night conversations, unexpected jokes, small talks that turn into long calls. 
-Those little moments may seem ordinary to others, but to me, they mean everything.<br><br>
-
-No matter where life leads us in the future, 
-this friendship will always remain a special chapter in my heart. 💙✨
-</p>
-
-  <button onclick="prevPage()">Previous ⬅</button>
+<div class="popup" id="surprisePopup">
+<h2>💙 Secret Message 💙</h2>
+<p>You are more special than you think. ✨</p>
+<button onclick="closePopup()">Close</button>
 </div>
 
 <script>
 
-/* Auto Pink Hearts Page1 */
-window.onload = function(){
-  setInterval(createPinkHeart,800);
-  setInterval(createStar,700);
-};
+let blueInterval;
+let starInterval;
 
 function playMusic(){
-  document.getElementById("music").play();
-}
-
-/* Hearts */
-function createPinkHeart(){
-  let h=document.createElement("div");
-  h.className="heart";
-  h.innerHTML="💖";
-  h.style.left=Math.random()*100+"vw";
-  h.style.animation="floatUp 6s linear";
-  document.body.appendChild(h);
-  setTimeout(()=>{h.remove();},6000);
+const music=document.getElementById("music");
+music.volume=0;
+music.play();
+let fade=setInterval(()=>{
+if(music.volume<1){music.volume+=0.05;}
+else{clearInterval(fade);}
+},200);
 }
 
 function createBlueHeart(){
-  let h=document.createElement("div");
-  h.className="heart";
-  h.innerHTML="💙";
-  h.style.left=Math.random()*100+"vw";
-  h.style.animation="fall 6s linear";
-  document.body.appendChild(h);
-  setTimeout(()=>{h.remove();},6000);
+let h=document.createElement("div");
+h.className="heart";
+h.innerHTML="💙";
+h.style.left=Math.random()*100+"vw";
+h.style.animation="fall 6s linear";
+document.body.appendChild(h);
+setTimeout(()=>{h.remove();},6000);
 }
 
 function createStar(){
-  let s=document.createElement("div");
-  s.className="star";
-  s.innerHTML="✨";
-  s.style.left=Math.random()*100+"vw";
-  s.style.animation="fall 5s linear";
-  document.body.appendChild(s);
-  setTimeout(()=>{s.remove();},5000);
+let s=document.createElement("div");
+s.className="star";
+s.innerHTML="✨";
+s.style.left=Math.random()*100+"vw";
+s.style.animation="fall 5s linear";
+document.body.appendChild(s);
+setTimeout(()=>{s.remove();},5000);
 }
 
-/* Fireworks */
-function explodeFireworks(){
-  for(let i=0;i<40;i++){
-    let f=document.createElement("div");
-    f.className="firework";
-    f.style.left=Math.random()*100+"vw";
-    f.style.top=Math.random()*100+"vh";
-    f.style.backgroundColor=`hsl(${Math.random()*360},100%,60%)`;
-    document.body.appendChild(f);
-    setTimeout(()=>{f.remove();},1000);
-  }
-}
-
-/* Navigation */
 function nextPage(){
-  document.body.classList.add("active-page2");
-  explodeFireworks();
-  setInterval(createBlueHeart,700);
+document.body.classList.add("active-page2");
+}
+
+function nextPage2(){
+document.body.classList.remove("active-page2");
+document.body.classList.add("active-page3");
+
+blueInterval=setInterval(createBlueHeart,400);
+starInterval=setInterval(createStar,500);
+
+setTimeout(()=>{
+document.getElementById("surprisePopup").style.display="block";
+},2000);
 }
 
 function prevPage(){
-  document.body.classList.remove("active-page2");
+document.body.classList.remove("active-page2");
 }
+
+function prevPage3(){
+document.body.classList.remove("active-page3");
+document.body.classList.add("active-page2");
+clearInterval(blueInterval);
+clearInterval(starInterval);
+}
+
+function closePopup(){
+document.getElementById("surprisePopup").style.display="none";
+}
+
+/* Sparkle Cursor */
+document.addEventListener("mousemove",function(e){
+let sparkle=document.createElement("div");
+sparkle.innerHTML="✨";
+sparkle.style.position="fixed";
+sparkle.style.left=e.clientX+"px";
+sparkle.style.top=e.clientY+"px";
+sparkle.style.pointerEvents="none";
+document.body.appendChild(sparkle);
+setTimeout(()=>{sparkle.remove();},500);
+});
 
 </script>
 
