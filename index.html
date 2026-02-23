@@ -17,14 +17,14 @@ body{
 }
 
 /* MARQUEE (ONLY PAGE1) */
-.marquee{
+  .marquee{
   position:fixed;
-  top:0;
-  left:0;
+  position:absolute;
+  top:15px;
   width:100%;
-  background:transparent;
-  padding-top:15px;
-  z-index:1000;
+  overflow:hidden;
+  white-space:nowrap;
+  z-index:10;
 }
 .marquee span{
   display:inline-block;
