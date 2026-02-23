@@ -284,16 +284,6 @@ function nextPage(){
 function nextPage2(){
   document.body.classList.remove("active-page2");
   document.body.classList.add("active-page3");
-
-  clearInterval(pinkInterval);
-  clearInterval(blueInterval);
-  clearInterval(starInterval);
-
-  /* Start falling hearts on page 3 */
-  pinkInterval = setInterval(createPinkHeart,700);
-}
-  document.body.classList.remove("active-page2");
-  document.body.classList.add("active-page3");
   clearInterval(blueInterval);
 }
 
@@ -304,10 +294,13 @@ function prevPage(){
 }
 
 function prevPage3(){
+  function prevPage3(){
   document.body.classList.remove("active-page3");
   document.body.classList.add("active-page2");
+
   clearInterval(pinkInterval);
-  blueInterval=setInterval(createBlueHeart,800);
+
+  blueInterval = setInterval(createBlueHeart,800);
 }
 
 </script>
