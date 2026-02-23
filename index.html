@@ -109,14 +109,20 @@ p{
 
 /* BUTTON */
 button{
-  padding:12px 28px;
-  font-size:16px;
+  padding:18px 40px;   /* more space inside */
+  font-size:20px;      /* bigger text */
   border:none;
-  border-radius:30px;
+  border-radius:35px;
   background:#ff4d8d;
   color:white;
   cursor:pointer;
-  margin-top:12px;
+  margin-top:18px;
+  box-shadow:0 10px 25px rgba(0,0,0,0.3);
+  transition:0.3s;
+}
+
+button:hover{
+  transform:scale(1.08);
 }
 
 /* HEARTS & STARS */
@@ -278,6 +284,16 @@ function nextPage(){
 function nextPage2(){
   document.body.classList.remove("active-page2");
   document.body.classList.add("active-page3");
+
+  clearInterval(pinkInterval);
+  clearInterval(blueInterval);
+  clearInterval(starInterval);
+
+  /* Start falling hearts on page 3 */
+  pinkInterval = setInterval(createPinkHeart,700);
+}
+  document.body.classList.remove("active-page2");
+  document.body.classList.add("active-page3");
   clearInterval(blueInterval);
 }
 
@@ -290,6 +306,7 @@ function prevPage(){
 function prevPage3(){
   document.body.classList.remove("active-page3");
   document.body.classList.add("active-page2");
+  clearInterval(pinkInterval);
   blueInterval=setInterval(createBlueHeart,800);
 }
 
