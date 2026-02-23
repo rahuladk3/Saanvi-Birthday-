@@ -15,17 +15,11 @@ body{
   color:white;
   text-align:center;
 
-  /* Show marquee only on page1 */
-.active-page2 .marquee,
-.active-page3 .marquee{
-  display:none;
 }
   
-}
-
 /* MARQUEE */
 .marquee{
-  position:fixed;
+  position:absolute;
   top:15px;
   width:100%;
   overflow:hidden;
@@ -144,9 +138,14 @@ button{
 
 <audio id="music" src="birthday.mp3" loop></audio>
 
-<div class="marquee">
-<span>🎉 HAPPY BIRTHDAY TO YOU SANJAM PANTA 💖🥳 🎉</span>
-</div>
+<!-- PAGE 1 -->
+<div class="section" id="page1">
+
+  <div class="marquee">
+    <span>🎉 HAPPY BIRTHDAY TO YOU SANJAM PANTA 💖🥳 🎉</span>
+  </div>
+
+  <div class="photos">
 
 <!-- PAGE 1 -->
 <div class="section" id="page1">
@@ -158,9 +157,6 @@ button{
 
 <h1 class="glow-title">🎂 Happy Birthday 🎂</h1>
 <h2>Saanvi 💖</h2>
-
-<p>
-Happy Birthday, Saanvi! 🎉✨<br><br>
 
 On this beautiful day, I just want to remind you how special you truly are. 
 May your life always be filled with calmness, happiness, and the kind of peace that makes your heart feel light. 
@@ -175,7 +171,7 @@ No matter what challenges come your way,
 I pray you always find strength, courage, and positivity within yourself.<br><br>
 
 You deserve nothing less than the most beautiful things life can offer. 
-Stay the same pure, kind, and wonderful soul you are. 🌷✨
+  Stay the same pure, kind, and wonderful soul you are. 🌷✨
 </p>
 
 <button onclick="playMusic()">Tap For Magic ✨</button>
@@ -201,24 +197,19 @@ Stay the same pure, kind, and wonderful soul you are. 🌷✨
 
 <!-- PAGE 3 -->
 <div class="section" id="page3" style="background:linear-gradient(to bottom,#a2d2ff,#bde0fe);">
-<h1 class="page3-title">Forever Us 💙</h1>
+<h1 class="page3-title">Us🩵 </h1>
 
 <p>
-🤍 About Us – Saanvi, Ishan & Me<br><br>
-
 Having Saanvi and Ishan in my life feels like a blessing I never expected but always needed. 
-What we share is not just friendship — it’s comfort, understanding, and a connection that feels natural and effortless.<br><br>
+What we share is not just friendship it’s comfort, understanding, and a connection that feels natural and effortless.<br><br>
 
-We talk almost every day — mostly on calls — laughing over random things, teasing each other endlessly, 
-sometimes getting annoyed, but never staying distant for long. 
+We talk almost every day mostly on calls laughing over random things, teasing each other endlessly, sometimes getting annoyed, but never staying distant for long. 
 No matter how small the disagreement is, we always choose to come back and fix it.<br><br>
 
-Some days feel incomplete without hearing their voices. 
-Sometimes I even struggle to sleep if we haven’t talked. 
-Whenever I get a little free time, they are the first people I think of — 
-because they are not just friends anymore, they feel like home.<br><br>
+Some days feel incomplete without hearing their voices. Sometimes I even struggle to sleep if we haven’t talked. 
+Whenever I get a little free time, they are the first people I think of because they are not just friends anymore, they feel like home.<br><br>
 
-We’ve created so many simple yet unforgettable memories — 
+We’ve created so many simple yet unforgettable memories
 late night conversations, unexpected jokes, small talks that turn into long calls. 
 Those little moments may seem ordinary to others, but to me, they mean everything.<br><br>
 
