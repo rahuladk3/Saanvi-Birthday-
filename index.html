@@ -18,11 +18,13 @@ body{
 
 /* MARQUEE (ONLY PAGE1) */
 .marquee{
-  position:absolute;
-  top:15px;
+  position:fixed;
+  top:0;
+  left:0;
   width:100%;
-  overflow:hidden;
-  white-space:nowrap;
+  background:transparent;
+  padding-top:15px;
+  z-index:1000;
 }
 .marquee span{
   display:inline-block;
@@ -49,6 +51,7 @@ body{
   justify-content:center;
   align-items:center;
   transition:transform 0.8s ease;
+  padding-top:120px; /* top spacing control */
 }
 
 #page1{ transform:translateX(0); }
