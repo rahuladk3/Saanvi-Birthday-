@@ -28,7 +28,7 @@ body{
 .marquee span{
   display:inline-block;
   padding-left:100%;
-  font-size:4rem;
+  font-size:3rem;
   font-weight:bold;
   animation:scrollText 12s linear infinite;
   background: linear-gradient(90deg, red, orange, yellow, green, cyan, blue, violet);
@@ -62,7 +62,7 @@ body{
 .active-page3 #page2{ transform:translateX(-100%); }
 .active-page3 #page3{ transform:translateX(0); }
 
-/* BIG PARAGRAPH */
+/* TEXT */
 p{
   font-size:1.9rem;
   line-height:2.2;
@@ -106,11 +106,6 @@ p{
   object-fit:cover;
   border-radius:20px;
   box-shadow:0 15px 35px rgba(0,0,0,0.4);
-  animation:autoZoom 6s infinite alternate;
-}
-@keyframes autoZoom{
-  from{transform:scale(1);}
-  to{transform:scale(1.08);}
 }
 
 /* BUTTON */
@@ -131,39 +126,9 @@ button{
   font-size:22px;
   z-index:0;
 }
-@keyframes floatUp{
-  from{transform:translateY(100vh);}
-  to{transform:translateY(-10vh);}
-}
 @keyframes fall{
   from{transform:translateY(-10vh);}
   to{transform:translateY(110vh);}
-}
-
-/* CLOUDS */
-.cloud{
-  position:absolute;
-  width:200px;
-  opacity:0.6;
-  animation:cloudMove 50s linear infinite;
-}
-@keyframes cloudMove{
-  from{transform:translateX(-300px);}
-  to{transform:translateX(120vw);}
-}
-
-/* POPUP */
-.popup{
-  position:fixed;
-  top:50%;
-  left:50%;
-  transform:translate(-50%,-50%);
-  background:white;
-  color:#333;
-  padding:30px;
-  border-radius:20px;
-  display:none;
-  z-index:1000;
 }
 </style>
 </head>
@@ -211,100 +176,87 @@ button{
 </div>
 
 <!-- PAGE 3 -->
-<div class="section" id="page3">
-<img src="https://i.ibb.co/2k0Y8FZ/cloud.png" class="cloud" style="top:15%;">
-<img src="https://i.ibb.co/2k0Y8FZ/cloud.png" class="cloud" style="top:45%;animation-duration:70s;">
-
+<div class="section" id="page3" style="background:linear-gradient(to bottom,#a2d2ff,#bde0fe);">
 <h1 class="page3-title">Forever Us 💙</h1>
 
-<p>This friendship is rare, beautiful, and forever special. 💙✨</p>
+<p>
+Some friendships are simple…  
+Some are unforgettable…  
+And some feel like home.  
+
+No matter what happens in life,  
+this bond will always stay special. 💙✨
+</p>
 
 <button onclick="prevPage3()">Previous ⬅</button>
 </div>
 
-<div class="popup" id="surprisePopup">
-<h2>💙 Secret Message 💙</h2>
-<p>You are more special than you think. ✨</p>
-<button onclick="closePopup()">Close</button>
-</div>
-
 <script>
 
-let blueInterval;
-let starInterval;
+let pinkInterval, blueInterval, starInterval;
+
+window.onload = function(){
+  pinkInterval = setInterval(createPinkHeart,800);
+  starInterval = setInterval(createStar,700);
+};
 
 function playMusic(){
-const music=document.getElementById("music");
-music.volume=0;
-music.play();
-let fade=setInterval(()=>{
-if(music.volume<1){music.volume+=0.05;}
-else{clearInterval(fade);}
-},200);
+  document.getElementById("music").play();
+}
+
+function createPinkHeart(){
+  let h=document.createElement("div");
+  h.className="heart";
+  h.innerHTML="💖";
+  h.style.left=Math.random()*100+"vw";
+  h.style.animation="fall 6s linear";
+  document.body.appendChild(h);
+  setTimeout(()=>{h.remove();},6000);
 }
 
 function createBlueHeart(){
-let h=document.createElement("div");
-h.className="heart";
-h.innerHTML="💙";
-h.style.left=Math.random()*100+"vw";
-h.style.animation="fall 6s linear";
-document.body.appendChild(h);
-setTimeout(()=>{h.remove();},6000);
+  let h=document.createElement("div");
+  h.className="heart";
+  h.innerHTML="💙";
+  h.style.left=Math.random()*100+"vw";
+  h.style.animation="fall 6s linear";
+  document.body.appendChild(h);
+  setTimeout(()=>{h.remove();},6000);
 }
 
 function createStar(){
-let s=document.createElement("div");
-s.className="star";
-s.innerHTML="✨";
-s.style.left=Math.random()*100+"vw";
-s.style.animation="fall 5s linear";
-document.body.appendChild(s);
-setTimeout(()=>{s.remove();},5000);
+  let s=document.createElement("div");
+  s.className="star";
+  s.innerHTML="✨";
+  s.style.left=Math.random()*100+"vw";
+  s.style.animation="fall 5s linear";
+  document.body.appendChild(s);
+  setTimeout(()=>{s.remove();},5000);
 }
 
 function nextPage(){
-document.body.classList.add("active-page2");
+  document.body.classList.add("active-page2");
+  clearInterval(pinkInterval);
+  blueInterval=setInterval(createBlueHeart,800);
 }
 
 function nextPage2(){
-document.body.classList.remove("active-page2");
-document.body.classList.add("active-page3");
-
-blueInterval=setInterval(createBlueHeart,400);
-starInterval=setInterval(createStar,500);
-
-setTimeout(()=>{
-document.getElementById("surprisePopup").style.display="block";
-},2000);
+  document.body.classList.remove("active-page2");
+  document.body.classList.add("active-page3");
+  clearInterval(blueInterval);
 }
 
 function prevPage(){
-document.body.classList.remove("active-page2");
+  document.body.classList.remove("active-page2");
+  clearInterval(blueInterval);
+  pinkInterval=setInterval(createPinkHeart,800);
 }
 
 function prevPage3(){
-document.body.classList.remove("active-page3");
-document.body.classList.add("active-page2");
-clearInterval(blueInterval);
-clearInterval(starInterval);
+  document.body.classList.remove("active-page3");
+  document.body.classList.add("active-page2");
+  blueInterval=setInterval(createBlueHeart,800);
 }
-
-function closePopup(){
-document.getElementById("surprisePopup").style.display="none";
-}
-
-/* Sparkle Cursor */
-document.addEventListener("mousemove",function(e){
-let sparkle=document.createElement("div");
-sparkle.innerHTML="✨";
-sparkle.style.position="fixed";
-sparkle.style.left=e.clientX+"px";
-sparkle.style.top=e.clientY+"px";
-sparkle.style.pointerEvents="none";
-document.body.appendChild(sparkle);
-setTimeout(()=>{sparkle.remove();},500);
-});
 
 </script>
 
