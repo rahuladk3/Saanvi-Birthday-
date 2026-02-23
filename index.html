@@ -14,22 +14,20 @@ body{
   overflow:hidden;
   color:white;
   text-align:center;
-
 }
-  
-/* MARQUEE */
+
+/* MARQUEE (ONLY PAGE1) */
 .marquee{
-  position:fixed;
+  position:absolute;
   top:15px;
   width:100%;
   overflow:hidden;
   white-space:nowrap;
-  z-index:10;
 }
 .marquee span{
   display:inline-block;
   padding-left:100%;
-  font-size:3rem;
+  font-size:2.5rem;
   font-weight:bold;
   animation:scrollText 12s linear infinite;
   background: linear-gradient(90deg, red, orange, yellow, green, cyan, blue, violet);
@@ -65,45 +63,31 @@ body{
 
 /* TEXT */
 p{
-  font-size:1.9rem;
-  line-height:2.2;
+  font-size:1.8rem;
+  line-height:2.1;
   max-width:900px;
 }
 
 /* TITLES */
 .glow-title{
-  font-size:3.5rem;
+  font-size:3.2rem;
   font-weight:800;
   text-shadow:0 0 10px #ff9ecf,0 0 20px #ff6ec7,0 0 30px #a0d8ff;
-  animation: glowPulse 3s infinite alternate;
-}
-@keyframes glowPulse{
-  from{ text-shadow:0 0 10px #ff9ecf; }
-  to{ text-shadow:0 0 40px #a0d8ff; }
 }
 
-.page3-title{
-  font-size:50px;
-  font-weight:800;
-  text-shadow:0 0 15px #74c0fc,0 0 30px #4dabf7;
-  animation: blueGlow 3s infinite alternate;
-}
-@keyframes blueGlow{
-  from{ text-shadow:0 0 10px #74c0fc; }
-  to{ text-shadow:0 0 50px #a5d8ff; }
+/* MEDIA */
+.photos,.media-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:25px;
+  margin-bottom:25px;
 }
 
-/* PHOTOS */
-.photos,.photo-grid{
-  display:flex;
-  gap:30px;
-  flex-wrap:wrap;
-  justify-content:center;
-  margin-bottom:20px;
-}
-.photos img,.photo-grid img{
-  width:240px;
-  height:330px;
+.photos img,
+.media-grid img,
+.media-grid video{
+  width:230px;
+  height:320px;
   object-fit:cover;
   border-radius:20px;
   box-shadow:0 15px 35px rgba(0,0,0,0.4);
@@ -111,14 +95,14 @@ p{
 
 /* BUTTON */
 button{
-  padding:14px 30px;
-  font-size:18px;
+  padding:12px 28px;
+  font-size:16px;
   border:none;
   border-radius:30px;
   background:#ff4d8d;
   color:white;
   cursor:pointer;
-  margin-top:15px;
+  margin-top:12px;
 }
 
 /* HEARTS & STARS */
@@ -146,79 +130,58 @@ button{
   </div>
 
   <div class="photos">
+    <img src="photo1.jpeg">
+    <img src="photo2.jpeg">
+    <img src="photo3.jpeg">
+  </div>
 
-<!-- PAGE 1 -->
-<div class="section" id="page1">
-<div class="photos">
-<img src="photo1.jpeg">
-<img src="photo2.jpeg">
-<img src="photo3.jpeg">
-</div>
+  <h1 class="glow-title">🎂 Happy Birthday 🎂</h1>
+  <h2>Saanvi 💖</h2>
 
-<h1 class="glow-title">🎂 Happy Birthday 🎂</h1>
-<h2>Saanvi 💖</h2>
+  <p>May your life always shine with happiness and love. ✨</p>
 
-<p>
-On this beautiful day, I just want to remind you how special you truly are. 
-May your life always be filled with calmness, happiness, and the kind of peace that makes your heart feel light. 
-I hope every dream you quietly carry inside you slowly turns into reality, one by one.<br><br>
-
-May success follow your efforts, love surround your heart, 
-and may you always find yourself growing into someone you are proud of becoming.<br><br>
-
-Please never let sadness stay with you for too long — 
-because your smile has the power to brighten even the darkest moments. 
-No matter what challenges come your way, 
-I pray you always find strength, courage, and positivity within yourself.<br><br>
-
-You deserve nothing less than the most beautiful things life can offer. 
-  Stay the same pure, kind, and wonderful soul you are. 🌷✨
-</p>
-
-<button onclick="playMusic()">Tap For Magic ✨</button>
-<button onclick="nextPage()">Next 💌</button>
+  <button onclick="playMusic()">Tap For Magic ✨</button>
+  <button onclick="nextPage()">Next 💌</button>
 </div>
 
 <!-- PAGE 2 -->
 <div class="section" id="page2">
-<div class="photo-grid">
-<img src="photo4.jpeg">
-<img src="photo5.jpeg">
-<img src="photo6.jpeg">
-<img src="photo7.jpeg">
-<img src="photo8.jpeg">
-<img src="photo9.jpeg">
-</div>
 
-<h1>Our Little World 💙</h1>
+  <div class="media-grid">
+    <!-- 6 PHOTOS -->
+    <img src="photo4.jpeg">
+    <img src="photo5.jpeg">
+    <img src="photo6.jpeg">
+    <img src="photo7.jpeg">
+    <img src="photo8.jpeg">
+    <img src="photo9.jpeg">
 
-<button onclick="nextPage2()">Next 💙</button>
-<button onclick="prevPage()">Previous ⬅</button>
+    <!-- 3 VIDEOS -->
+    <video src="video1.mp4" controls></video>
+    <video src="video2.mp4" controls></video>
+    <video src="video3.mp4" controls></video>
+  </div>
+
+  <h1>Our Little World 💙</h1>
+
+  <button onclick="nextPage2()">Next 💙</button>
+  <button onclick="prevPage()">Previous ⬅</button>
 </div>
 
 <!-- PAGE 3 -->
 <div class="section" id="page3" style="background:linear-gradient(to bottom,#a2d2ff,#bde0fe);">
-<h1 class="page3-title">Us🩵 </h1>
 
-<p>
-Having Saanvi and Ishan in my life feels like a blessing I never expected but always needed. 
-What we share is not just friendship it’s comfort, understanding, and a connection that feels natural and effortless.<br><br>
+  <h1 style="font-size:45px;">Forever Us 💙</h1>
 
-We talk almost every day mostly on calls laughing over random things, teasing each other endlessly, sometimes getting annoyed, but never staying distant for long. 
-No matter how small the disagreement is, we always choose to come back and fix it.<br><br>
+  <p>
+Some friendships are rare.  
+Some feel like home.  
 
-Some days feel incomplete without hearing their voices. Sometimes I even struggle to sleep if we haven’t talked. 
-Whenever I get a little free time, they are the first people I think of because they are not just friends anymore, they feel like home.<br><br>
+No matter where life takes us,  
+this bond will always remain special. 💙✨
+  </p>
 
-We’ve created so many simple yet unforgettable memories
-late night conversations, unexpected jokes, small talks that turn into long calls. 
-Those little moments may seem ordinary to others, but to me, they mean everything.<br><br>
-
-No matter where life leads us in the future, 
-this friendship will always remain a special chapter in my heart. 💙✨
-</p>
-
-<button onclick="prevPage3()">Previous ⬅</button>
+  <button onclick="prevPage3()">Previous ⬅</button>
 </div>
 
 <script>
