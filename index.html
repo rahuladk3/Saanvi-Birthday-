@@ -9,16 +9,51 @@ body{
   margin:0;
   font-family:'Poppins', sans-serif;
   min-height:100vh;
-  background: linear-gradient(to bottom,
-      #ffb3d9,
-      #ffc8dd,
-      #bde0fe,
-      #a2d2ff);
-  background-attachment: fixed;
-  background-size: cover;
+  background: linear-gradient(to bottom,#ffb3d9,#ffc8dd,#bde0fe,#a2d2ff);
   overflow:hidden;
   color:white;
   text-align:center;
+}
+
+/* MOVING CLOUDS */
+body::before{
+  content:"";
+  position:fixed;
+  top:0;left:0;
+  width:200%;
+  height:100%;
+  background:url('https://i.ibb.co/7yY0yCz/clouds.png');
+  opacity:0.15;
+  animation:moveClouds 60s linear infinite;
+  z-index:-1;
+}
+@keyframes moveClouds{
+  from{transform:translateX(0);}
+  to{transform:translateX(-50%);}
+}
+
+/* RGB TOP TEXT */
+.marquee{
+  position:fixed;
+  top:15px;
+  width:100%;
+  overflow:hidden;
+  white-space:nowrap;
+  z-index:10;
+}
+.marquee span{
+  display:inline-block;
+  padding-left:100%;
+  font-size:22px;
+  font-weight:bold;
+  animation:scrollText 12s linear infinite;
+  background: linear-gradient(90deg, red, orange, yellow, green, cyan, blue, violet);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+}
+@keyframes scrollText{
+  0%{transform:translateX(0);}
+  100%{transform:translateX(-100%);}
 }
 
 /* SECTION */
@@ -32,73 +67,63 @@ body{
   align-items:center;
   transition:transform 0.8s ease;
 }
-
-#page1{ transform:translateX(0); }
-#page2{ transform:translateX(100%); }
-
-.active-page2 #page1{ transform:translateX(-100%); }
-.active-page2 #page2{ transform:translateX(0); }
+#page1{transform:translateX(0);}
+#page2{transform:translateX(100%);}
+.active-page2 #page1{transform:translateX(-100%);}
+.active-page2 #page2{transform:translateX(0);}
 
 /* BIG PARAGRAPH */
 p{
-  font-size:1.6rem;
+  font-size:1.8rem;
   line-height:2;
   max-width:850px;
+  text-shadow:0 0 12px rgba(0,0,0,0.6);
 }
 
 /* GLOW TITLE */
 .glow-title{
-  font-size:3.5rem;
+  font-size:4rem;
   font-weight:800;
+  background: linear-gradient(90deg,#ff4da6,#ff99cc,#66ccff,#3399ff);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
   text-shadow:
-    0 0 10px #ff9ecf,
-    0 0 20px #ff6ec7,
-    0 0 30px #a0d8ff,
-    0 0 50px #74c0fc;
-  animation: glowPulse 3s infinite ease-in-out;
+    0 0 15px #ff4da6,
+    0 0 25px #66ccff,
+    0 0 40px #ff99cc,
+    0 0 60px #3399ff;
+  animation: glowPulse 2.5s infinite alternate;
+}
+@keyframes glowPulse{
+  from{text-shadow:0 0 15px #ff4da6,0 0 25px #66ccff;}
+  to{text-shadow:0 0 30px #ff99cc,0 0 50px #3399ff;}
 }
 
-@keyframes glowPulse{
-  0%{ text-shadow:0 0 10px #ff9ecf,0 0 20px #ff6ec7; }
-  50%{ text-shadow:0 0 25px #a0d8ff,0 0 40px #74c0fc; }
-  100%{ text-shadow:0 0 10px #ff9ecf,0 0 20px #ff6ec7; }
-}
-  
-/* Photos Page1 */
+/* Photos */
 .photos{
   display:flex;
   gap:30px;
   margin-bottom:20px;
 }
 .photos img{
-  width:240px;
-  height:340px;
+  width:260px;
+  height:360px;
   object-fit:cover;
   border-radius:20px;
   box-shadow:0 15px 35px rgba(0,0,0,0.4);
-  transition:0.4s;
-}
-.photos img:hover{
-  transform:scale(1.08);
 }
 
-/* Page2 Grid */
 .photo-grid{
   display:grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(3,1fr);
   gap:30px;
-  margin-bottom:30px;
 }
 .photo-grid img{
-  width:250px;
-  height:330px;
+  width:260px;
+  height:360px;
   object-fit:cover;
   border-radius:25px;
   box-shadow:0 15px 35px rgba(0,0,0,0.4);
-  transition:0.4s;
-}
-.photo-grid img:hover{
-  transform:scale(1.1);
 }
 
 /* Buttons */
@@ -147,124 +172,129 @@ button{
 
 <audio id="music" src="birthday.mp3" loop></audio>
 
+<div class="marquee">
+<span>🎉 HAPPY BIRTHDAY TO YOU SANJAM PANTA 💖🥳 🎉</span>
+</div>
+
 <!-- PAGE 1 -->
 <div class="section" id="page1">
 
-  <div class="photos">
-    <img src="photo1.jpeg">
-    <img src="photo2.jpeg">
-    <img src="photo3.jpeg">
-  </div>
+<div class="photos">
+<img src="photo1.jpeg">
+<img src="photo2.jpeg">
+<img src="photo3.jpeg">
+</div>
 
-  <h1 class="glow-title">🎂 Happy Birthday 🎂</h1>
-  <h2 style="font-size:2rem;">Saanvi 💖</h2>
+<h1 class="glow-title">🎂 Happy Birthday 🎂</h1>
+<h2 style="font-size:2.2rem;">Saanvi 💖</h2>
 
-  <p>
-    On your special day, I just want to say…<br><br>
-    You are one of the most beautiful souls I know ✨<br>
-    May your life be filled with love and happiness 💕<br><br>
-    I’ll always support you 💗
-  </p>
+<p>
+On your special day, I just want to say…<br><br>
+You are one of the most beautiful souls I know ✨<br>
+May your life be filled with love and happiness 💕<br><br>
+I’ll always support you 💗
+</p>
 
-  <!-- MUSIC BUTTON -->
-  <button onclick="playMusic()">Tap For Magic ✨</button>
-
-  <!-- NEXT BUTTON -->
-  <button onclick="nextPage()">Next 💌</button>
+<button onclick="playMusic()">Tap For Magic ✨</button>
+<button onclick="nextPage()">Next 💌</button>
 </div>
 
 <!-- PAGE 2 -->
 <div class="section" id="page2">
 
-  <div class="photo-grid">
-    <img src="photo4.jpeg">
-    <img src="photo5.jpeg">
-    <img src="photo6.jpeg">
-    <img src="photo7.jpeg">
-    <img src="photo8.jpeg">
-    <img src="photo9.jpeg">
-  </div>
+<div class="photo-grid">
+<img src="photo4.jpeg">
+<img src="photo5.jpeg">
+<img src="photo6.jpeg">
+<img src="photo7.jpeg">
+<img src="photo8.jpeg">
+<img src="photo9.jpeg">
+</div>
 
-  <h1 style="font-size:45px;">Our Little World 💙</h1>
+<h1 style="font-size:45px;">Our Little World 💙</h1>
 
-  <p>
-    Happy Birthday to you, our most special person 🎂💖<br><br>
-We three talk every single evening, and whenever we get time, we talk again.  
-Honestly, I can’t even sleep without talking to you both 💙<br><br>
-We laugh together, talk endlessly, get annoyed sometimes…  
-but still come back to each other again and again.<br><br>
-You are my comfort, my daily happiness, my safe place ✨  
-Our friendship means more than words can explain 💖
-  </p>
+<p>
+Happy Birthday to you, our most special person 🎂💖<br><br>
+We three talk every single evening...  
+You are my comfort, my daily happiness, my safe place ✨💖
+</p>
 
-  <button onclick="prevPage()">Previous ⬅</button>
+<button onclick="prevPage()">Previous ⬅</button>
 </div>
 
 <script>
 
-/* Auto Pink Hearts Page1 */
-window.onload = function(){
-  setInterval(createPinkHeart,800);
-  setInterval(createStar,700);
-};
-
+/* Smooth Music Fade In */
 function playMusic(){
-  document.getElementById("music").play();
+let music=document.getElementById("music");
+music.volume=0;
+music.play();
+let fade=setInterval(function(){
+if(music.volume<1){
+music.volume+=0.05;
+}else{
+clearInterval(fade);
+}
+},200);
 }
 
-/* Hearts */
+/* Hearts & Stars */
+window.onload=function(){
+setInterval(createPinkHeart,800);
+setInterval(createStar,700);
+}
+
 function createPinkHeart(){
-  let h=document.createElement("div");
-  h.className="heart";
-  h.innerHTML="💖";
-  h.style.left=Math.random()*100+"vw";
-  h.style.animation="floatUp 6s linear";
-  document.body.appendChild(h);
-  setTimeout(()=>{h.remove();},6000);
+let h=document.createElement("div");
+h.className="heart";
+h.innerHTML="💖";
+h.style.left=Math.random()*100+"vw";
+h.style.animation="floatUp 6s linear";
+document.body.appendChild(h);
+setTimeout(()=>h.remove(),6000);
 }
 
 function createBlueHeart(){
-  let h=document.createElement("div");
-  h.className="heart";
-  h.innerHTML="💙";
-  h.style.left=Math.random()*100+"vw";
-  h.style.animation="fall 6s linear";
-  document.body.appendChild(h);
-  setTimeout(()=>{h.remove();},6000);
+let h=document.createElement("div");
+h.className="heart";
+h.innerHTML="💙";
+h.style.left=Math.random()*100+"vw";
+h.style.animation="fall 6s linear";
+document.body.appendChild(h);
+setTimeout(()=>h.remove(),6000);
 }
 
 function createStar(){
-  let s=document.createElement("div");
-  s.className="star";
-  s.innerHTML="✨";
-  s.style.left=Math.random()*100+"vw";
-  s.style.animation="fall 5s linear";
-  document.body.appendChild(s);
-  setTimeout(()=>{s.remove();},5000);
+let s=document.createElement("div");
+s.className="star";
+s.innerHTML="✨";
+s.style.left=Math.random()*100+"vw";
+s.style.animation="fall 5s linear";
+document.body.appendChild(s);
+setTimeout(()=>s.remove(),5000);
 }
 
 /* Fireworks */
 function explodeFireworks(){
-  for(let i=0;i<40;i++){
-    let f=document.createElement("div");
-    f.className="firework";
-    f.style.left=Math.random()*100+"vw";
-    f.style.top=Math.random()*100+"vh";
-    f.style.backgroundColor=`hsl(${Math.random()*360},100%,60%)`;
-    document.body.appendChild(f);
-    setTimeout(()=>{f.remove();},1000);
-  }
+for(let i=0;i<40;i++){
+let f=document.createElement("div");
+f.className="firework";
+f.style.left=Math.random()*100+"vw";
+f.style.top=Math.random()*100+"vh";
+f.style.backgroundColor=`hsl(${Math.random()*360},100%,60%)`;
+document.body.appendChild(f);
+setTimeout(()=>f.remove(),1000);
+}
 }
 
 /* Navigation */
 function nextPage(){
-  document.body.classList.add("active-page2");
-  explodeFireworks();
-  setInterval(createBlueHeart,700);
+document.body.classList.add("active-page2");
+explodeFireworks();
+setInterval(createBlueHeart,700);
 }
-
 function prevPage(){
-  document.body.classList.remove("active-page2");
+document.body.classList.remove("active-page2");
 }
 
 </script>
