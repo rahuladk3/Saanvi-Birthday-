@@ -288,7 +288,9 @@ function prevPage(){
 }
 
 function prevPage3(){
-  
+  document.body.classList.remove("active-page3");
+  document.body.classList.add("active-page2");
+  blueInterval=setInterval(createBlueHeart,800);
 }
 
 </script>
