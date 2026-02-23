@@ -75,7 +75,18 @@ p{
 .glow-title{
   font-size:3.2rem;
   font-weight:800;
-  text-shadow:0 0 10px #ff9ecf,0 0 20px #ff6ec7,0 0 30px #a0d8ff;
+  text-shadow:
+    0 0 10px #ff9ecf,
+    0 0 20px #ff6ec7,
+    0 0 30px #a0d8ff,
+    0 0 50px #74c0fc;
+  animation: glowPulse 3s infinite ease-in-out;
+}
+
+@keyframes glowPulse{
+  0%{ text-shadow:0 0 10px #ff9ecf,0 0 20px #ff6ec7; }
+  50%{ text-shadow:0 0 25px #a0d8ff,0 0 40px #74c0fc; }
+  100%{ text-shadow:0 0 10px #ff9ecf,0 0 20px #ff6ec7; }
 }
 
 /* MEDIA */
@@ -139,7 +150,6 @@ button{
   </div>
 
   <h1 class="glow-title">🎂 Happy Birthday 🎂</h1>
-  <h2>Saanvi 💖</h2>
 
   <p>
 
