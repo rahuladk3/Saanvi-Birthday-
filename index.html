@@ -252,7 +252,7 @@ function createPinkHeart(){
 function createBlueHeart(){
   let h=document.createElement("div");
   h.className="heart";
-  h.innerHTML="💙";
+  h.innerHTML="🩵";
   h.style.left=Math.random()*100+"vw";
   h.style.animation="fall 6s linear";
   document.body.appendChild(h);
@@ -272,24 +272,37 @@ function createStar(){
 function nextPage(){
   document.body.classList.add("active-page2");
   clearInterval(pinkInterval);
+  clearInterval(starInterval);
   blueInterval=setInterval(createBlueHeart,800);
 }
 
 function nextPage2(){
   document.body.classList.remove("active-page2");
   document.body.classList.add("active-page3");
+  clearInterval(pinkInterval);
   clearInterval(blueInterval);
+  clearInterval(starInterval);
+
+  pinkInterval=setInterval(createPinkHeart,800);
+  blueInterval=setInterval(createBlueHeart,900);
+  starInterval=setInterval(createStar,700);
 }
 
 function prevPage(){
   document.body.classList.remove("active-page2");
   clearInterval(blueInterval);
   pinkInterval=setInterval(createPinkHeart,800);
+  starInterval=setInterval(createStar,700);
 }
 
 function prevPage3(){
   document.body.classList.remove("active-page3");
   document.body.classList.add("active-page2");
+
+   clearInterval(pinkInterval);
+   clearInterval(blueInterval);
+   clearInterval(starInterval);
+  
   blueInterval=setInterval(createBlueHeart,800);
 }
 
