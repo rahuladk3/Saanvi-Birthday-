@@ -338,15 +338,6 @@ function nextPage2(){
   blueInterval=setInterval(createBlueHeart,900);
   starInterval=setInterval(createStar,700);
 }
-function nextPage3(){
-document.body.classList.remove("active-page3");
-document.body.classList.add("active-page4");
-clearInterval(pinkInterval);
-clearInterval(blueInterval);
-clearInterval(starInterval);
-blueInterval=setInterval(createBlueHeart,800);
-starInterval=setInterval(createStar,700);
-}
   
 function prevPage(){
   document.body.classList.remove("active-page2");
